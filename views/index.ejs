@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="main w-full h-screen bg-cyan-200">
+        <h1>user rgister</h1>
+        <form action="/register" method="post">
+            <input type="text" name="name" placeholder="write your name">
+            <input type="email" name="email" placeholder="write your email">
+            <input type="password" name="password" placeholder="write your password">
+            <input type="submit" value="rgister">
+        </form>
+        
+
+        <% 
+        if (typeof massage !== 'undefined'){
+            %>
+            <p class="text-green-300"><%= massage %></p>
+            <%
+        }
+         %>
+    </div>
+</body>
+</html>

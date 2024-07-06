@@ -1,7 +1,8 @@
 const app = require("express");
 const router = app.Router();
-const { lendingPageController } = require("../controllers/index-controller");
+const { lendingPageController, userCreationsController } = require("../controllers/index-controller");
 
 router.get("/", lendingPageController);
+router.post("/register", userCreationsController);
 
 module.exports = router;
