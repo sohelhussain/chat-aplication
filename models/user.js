@@ -15,12 +15,10 @@ const userSchema = mongoose.Schema({
     },
     image:{
         type:String,
-        required:true,
     },
     password:{
         type:String,
         minLength: 2,
-        maxLength: 12,
         required:true,
     },
     is_online:{
