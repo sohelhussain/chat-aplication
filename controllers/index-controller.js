@@ -24,12 +24,13 @@ module.exports.userCreationsController = (req, res, next) => {
         })
         let token = jwt.sign({email: user.email, id: user._id}, process.env.JWT_PASSKEY);
         res.cookie('token', token);
-        res.redirect('/')
+        req.me = user;
+        res.redirect('/dashboard')
     });
   })
 };
 
-// user login get
+// user login page randering
 
 module.exports.userLoginPageController = (req, res, next) => {
   res.render("login");
@@ -46,9 +47,10 @@ module.exports.userLoginController = async (req, res, next) => {
     if(result){
       let token = jwt.sign({email: user.email, id: user._id}, process.env.JWT_PASSKEY);
       res.cookie('token', token);
-      res.send('user are loggedin');
+      req.me = user;
+      res.redirect('/dashboard');
     }else{
-      res.send('your password are incorrect');
+      res.redirect('/');
     }
   })
 };
@@ -62,8 +64,17 @@ module.exports.userLogoutController = (req, res, next) => {
 };
 
 
+
+// type any url we redirect to login page
+
+module.exports.redirectLoginController = (req, res, next) =>{
+  res.redirect('/login');
+}
+
 //user dashboard
 
-module.exports.userDashboardController = (req, res, next) => {
-  res.render('dashboard');
+module.exports.userDashboardController = async (req, res, next) => {
+  let user = req.user;
+  let users = req.users;
+  res.render('dashboard', {me: user, users});
 };

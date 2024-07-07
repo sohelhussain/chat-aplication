@@ -1,3 +1,27 @@
 <%- include('./partials/header.ejs') %>
-<h1>this is a chat dashboard</h1>
+<div class="main w-full h-screen overflow-x-hidden">
+  <nav class="w-full flex items-center justify-between bg-green-200 p-9">
+    <h1>hello <span class="uppercase font-bold"><%= me.name %></span> this is from piggion</h1>
+    <a href="/logout">logout</a>
+  </nav>
+  <div class="chat-main w-full h-[89.4%] flex">
+
+
+    <div class="users w-1/3 h-full bg-red-400">
+            <ul>
+                <% users.forEach(user => { %>
+                    <li class="w-full p-5 bg-yellow-200 mt-3"> <%= user.name %> </li>
+               <%  }) %>
+            </ul>
+    </div>
+    <div class="chat-box w-9/12 h-full bg-red-300">
+        <form action="/message" method="post" class="absolute bottom-4 flex items-center justify-evenly w-8/12">
+            <div class="message w-[850px] p-2 rounded-md bg-zinc-200">
+                <input class="w-full bg-transparent outline-none" type="text" name="message">
+            </div>
+            <input class="bg-blue-600 p-2 rounded-md cursor-pointer text-white" type="submit" value="send message">
+        </form>
+    </div>
+  </div>
+</div>
 <%- include('./partials/footer.ejs') %>
