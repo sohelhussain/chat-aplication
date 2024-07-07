@@ -1,0 +1,10 @@
+<%- include('./partials/header.ejs') %>
+<div class="main w-full h-screen bg-cyan-200">
+    <h1>this is a login page</h1>
+    <form action="/login" method="post">
+        <input type="email" name="email" placeholder="write your email">
+        <input type="password" name="password" placeholder="write your password">
+        <input type="submit" value="login">
+    </form>
+</div>
+<%- include('./partials/footer.ejs') %>
